@@ -5,7 +5,7 @@ import torch
 import numpy as np
 
 class MRI_Dataset(Dataset):
-  def __init__(self, data_dir, classes, transform):
+  def __init__(self, data_dir, classes, transform=None):
     self.data_dir = data_dir
     self.classes = classes
     self.class_to_idx = {cls: idx for idx, cls in enumerate(classes)}
@@ -31,7 +31,8 @@ class MRI_Dataset(Dataset):
   def __getitem__(self, idx):
     img_path, label = self.dataset[idx]
     img = Image.open(img_path).convert("RGB")
-    img = np.array(img) / 255.0
+    if self.transform:
+      img = self.transform(img)
     img = np.transpose(img, (2, 0, 1))
     # Convert to one channel maybe since it is just black/white data?? but that might conflict with resnet, and normalize right away?
     onehot = np.zeros(len(self.classes))

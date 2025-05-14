@@ -8,7 +8,8 @@ def main():
     train_loader, val_loader, test_loader = get_dataloaders('./data', classes)
     model = Model()
     for images, labels in train_loader:
-        model.forward(images)
+        print(model.forward(images))
+
 
 if __name__ == '__main__':
     main()
