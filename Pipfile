@@ -9,6 +9,8 @@ kagglehub = "*"
 pandas = "*"
 torch = "*"
 pillow = "*"
+torchvision = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

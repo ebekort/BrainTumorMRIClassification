@@ -1,8 +1,11 @@
-# This is a sample Python script.
+from project_name.utils.loader import get_dataloaders
+import os
 
-def hello_world():
-    return "Hello, World!"
 
+def main():
+    classes = [cls for cls in os.listdir('./data') if not cls.endswith('.csv')]
+    print(f'classes: {classes}')
+    train_loader, val_loader, test_loader = get_dataloaders('./data', classes)
 
 if __name__ == '__main__':
-    hello_world()
+    main()
