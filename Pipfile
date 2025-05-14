@@ -7,6 +7,8 @@ name = "pypi"
 pre-commit = "*"
 kagglehub = "*"
 pandas = "*"
+torch = "*"
+pillow = "*"
 
 [dev-packages]
 
