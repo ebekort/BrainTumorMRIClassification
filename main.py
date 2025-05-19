@@ -13,7 +13,7 @@ def main():
     print(f'classes: {classes}')
     train_loader, val_loader, test_loader = get_dataloaders('./data', classes)
     model = Model()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
+    optimizer = optim.Adam(model.parameters(), lr=1e-4, weight_decay=1e-5)
     criterion = nn.CrossEntropyLoss()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)

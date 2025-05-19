@@ -12,7 +12,7 @@ class MRI_Dataset(Dataset):
     self.transform = transform
 
     self.dataset = self.load_dataset(self.data_dir)
-    self.dataset = self.dataset[:100] # testing purporses
+    self.dataset = self.dataset
 
 
   def load_dataset(self, data_dir):

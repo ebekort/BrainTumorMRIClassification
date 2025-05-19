@@ -1,5 +1,6 @@
 import torch
 from tqdm import tqdm
+from sklearn.metrics import f1_score
 
 def train(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25):
     """
@@ -42,11 +43,20 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, num_epo
         # Validation
         model.eval()
         val_loss = 0.0
+        summed_f1 = 0.0
         with torch.no_grad():
             for images, labels in val_loader:
                 images, labels = images.to(device), labels.to(device)
                 outputs = model(images)
                 loss = criterion(outputs, labels)
-                val_loss += loss.item()
+                val_loss += loss.item() 
+
+                _, predicted = torch.max(outputs.data, 1)
+                label = torch.argmax(labels, dim=1)
+                f1 = f1_score(label, predicted, average='weighted')
+                print(f'Validation F1 Score: {f1:.4f}')
+                summed_f1 += f1
+        summed_f1 /= len(val_loader)
+        print(f'Validation F1 Score (Average): {summed_f1:.4f}')
         val_loss /= len(val_loader)
         print(f'Validation Loss: {val_loss:.4f}')
