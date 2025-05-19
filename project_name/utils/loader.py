@@ -27,7 +27,7 @@ def get_dataloaders(data_dir, classes, batch_size=32, test_size=0.15, val_size=0
 
     # Create dataloaders
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=4)
-    val_loader = DataLoader(val_indices, batch_size=32, shuffle=False, num_workers=4)
+    val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=4)
     test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False, num_workers=4)
 
     return train_loader, val_loader, test_loader

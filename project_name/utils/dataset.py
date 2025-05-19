@@ -12,6 +12,7 @@ class MRI_Dataset(Dataset):
     self.transform = transform
 
     self.dataset = self.load_dataset(self.data_dir)
+    self.dataset = self.dataset[:100] # testing purporses
 
 
   def load_dataset(self, data_dir):
@@ -33,7 +34,7 @@ class MRI_Dataset(Dataset):
     img = Image.open(img_path).convert("RGB")
     if self.transform:
       img = self.transform(img)
-    img = np.transpose(img, (2, 0, 1))
+    
     # Convert to one channel maybe since it is just black/white data?? but that might conflict with resnet, and normalize right away?
     onehot = np.zeros(len(self.classes))
     onehot[label] = 1 # maybe we need dtype=long instead?
