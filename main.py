@@ -18,8 +18,15 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
     train(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25)
-    # Save the model
-    torch.save(model.state_dict(), './models/model.pth')
+
+    # Define model output directory and create it if it doesn't exist
+    model_output_dir = os.path.join("outputs", "models")
+    os.makedirs(model_output_dir, exist_ok=True)
+
+    # Save the model to the new directory
+    model_save_path = os.path.join(model_output_dir, 'resnet_model.pth')
+    torch.save(model.state_dict(), model_save_path)
+    print(f"Trained model saved to {model_save_path}")
 
     
 
