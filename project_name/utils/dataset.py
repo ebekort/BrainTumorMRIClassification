@@ -31,7 +31,7 @@ class MRI_Dataset(Dataset):
 
   def __getitem__(self, idx):
     img_path, label = self.dataset[idx]
-    img = Image.open(img_path).convert("RGB")
+    img = Image.open(img_path).convert("L")
     if self.transform:
       img = self.transform(img)
     

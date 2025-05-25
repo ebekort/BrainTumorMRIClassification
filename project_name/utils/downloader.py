@@ -4,7 +4,8 @@ import os
 import shutil
 
 path = kagglehub.dataset_download("orvile/brain-cancer-mri-dataset")
-destination_folder = "./data/"
+# Adjust destination_folder to be relative to the script's location, pointing to project_name/../data
+destination_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "data"))
 
 shutil.copy(os.path.join(path, 'dataset.csv'), os.path.join(destination_folder, 'dataset.csv'))
 

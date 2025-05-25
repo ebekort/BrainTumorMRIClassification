@@ -11,6 +11,9 @@ torch = "*"
 pillow = "*"
 torchvision = "*"
 scikit-learn = "*"
+numpy = "*"
+tqdm = "*"
+matplotlib = "*"
 
 [dev-packages]
 

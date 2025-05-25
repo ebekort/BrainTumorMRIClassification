@@ -6,9 +6,11 @@ class Model(nn.Module):
   def __init__(self, num_classes=3, hidden_layers=[512]):
     super(Model, self).__init__()
     self.backbone = models.resnet50(pretrained=True)
+    num_ftrs = self.backbone.fc.in_features
+    self.backbone.fc = nn.Identity()
     
     layers = []
-    size_in = self.backbone.fc.out_features
+    size_in = num_ftrs # Use the extracted feature size
     for size in hidden_layers:
       layers.append(nn.Linear(size_in, size))
       layers.append(nn.ReLU())
