@@ -96,3 +96,4 @@ This section will be updated with model performance metrics (e.g., accuracy, F1-
 
 *   Ebe Kort (e.kort.3@student.rug.nl)
 *   Senne Hollard (s.i.t.hollard@student.rug.nl)
+*   Tjeerd Morsch (t.p.r.morsch@student.rug.nl)
