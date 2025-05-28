@@ -61,4 +61,6 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, device, n
         val_loss /= len(val_loader)
         print(f'Validation Loss: {val_loss:.4f}')
 
-def train_SVM()
+def train_baseline(baseline, train_loader):
+    for images, labels in train_loader:
+        baseline.partial_fit(images, labels)
