@@ -1,7 +1,9 @@
 import os
 from project_name.utils.loader import get_dataloaders
 from project_name.models.main_model import Model
-from train_model import train
+from projact_name.models.baseline_model import SVM
+from train_model import train_model
+from train_model import train_SVM
 import torch
 import torch.optim as optim
 import torch.nn as nn
@@ -17,7 +19,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
-    train(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25)
+    train_model(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25)
     # Save the model
     torch.save(model.state_dict(), './models/model.pth')
 

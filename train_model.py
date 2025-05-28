@@ -2,7 +2,7 @@ import torch
 from tqdm import tqdm
 from sklearn.metrics import f1_score
 
-def train(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25):
+def train_model(model, train_loader, val_loader, criterion, optimizer, device, num_epochs=25):
     """
     Train the model.
     
@@ -60,3 +60,5 @@ def train(model, train_loader, val_loader, criterion, optimizer, device, num_epo
         print(f'Validation F1 Score (Average): {summed_f1:.4f}')
         val_loss /= len(val_loader)
         print(f'Validation Loss: {val_loss:.4f}')
+
+def train_SVM()
