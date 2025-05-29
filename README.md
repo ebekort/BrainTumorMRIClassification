@@ -2,14 +2,14 @@
 
 ## Project Overview
 
-The primary goal of this project is to develop a machine learning model capable of accurately classifying Magnetic Resonance Imaging (MRI) scans into three distinct types of brain tumors. A significant emphasis is placed on incorporating explainability features to understand the model's decision-making process, particularly for the Support Vector Machine (SVM) baseline.
+The goal of this project is to train a classifier that can determine whether A MRI scan of a brain is a glioma, menin or tumor. The main goal is to use Explainable AI on our trained models to determine whether the model is actually learning usuable pattern in the data and not the noise of the scans.
 
 ## Dataset
 
 The dataset used for this project consists of MRI scans of human brains.
 
 *   **Type**: MRI scans
-*   **Classes**: 3 types of brain tumors (specific names depend on the dataset structure, e.g., Meningioma, Glioma, Pituitary tumor)
+*   **Classes**: 3 types of brain tumors Meningioma, Glioma, Pituitary tumor)
 *   **Source**: Downloaded from Kaggle using `kagglehub`, dataset identifier: "orvile/brain-cancer-mri-dataset".
 *   **Approximate size**: Around 6000 scans.
 *   **Key Preprocessing Steps**:
@@ -84,27 +84,20 @@ Postman:
 ![Picture showing how to use API through postman](screen.png)
 
 
-This script will:
-*   Load and preprocess the data.
-*   Perform hyperparameter tuning for the SVM using `GridSearchCV`.
-*   Print classification results (accuracy, classification report) to the console.
-*   If a linear kernel is selected as the best model by `GridSearchCV`, feature importance plots (reshaped coefficient weights) will be saved as images in the `outputs/svm_explainability/` directory.
-
 ## Model Architecture
 
 ### Main Model (ResNet-based)
 
-*   **Feature Extractor**: A pre-trained ResNet50 model is used. The original fully connected layer of ResNet50 is replaced with an identity layer to extract features from the convolutional base.
-*   **Classification Head**: A custom classification head is added on top of the ResNet50 features. This head consists of one or more linear layers (configurable, e.g., `[512]`) with ReLU activations, followed by a final linear layer for outputting scores for the 3 tumor classes.
-
+*   **Input Data**: 224 by 224 normalized greyscale MRI images (Normalisation based on ImageNet mean and stdev)
+*   **Feature Extractor**: Resnet50 backbone that extracts features
+*   **Classification Head**: calssification head of 512 nodes that uses features from the backbone to do classification
 ### Baseline Model (SVM)
 
-*   **Input Data**: Uses flattened 224x224 grayscale image data as input features.
-*   **Model**: A Support Vector Machine (SVM) classifier.
-*   **Hyperparameter Tuning**: `GridSearchCV` is employed to find the optimal hyperparameters.
-    *   **Kernels**: 'linear' and 'rbf' are tested.
-    *   **Parameters**: `C` (regularization parameter) and `gamma` (for 'rbf' kernel) are tuned.
-*   **Explainability**: If the linear kernel is chosen, the model's coefficients are reshaped into 224x224 images and saved to visualize feature importance.
+*   **Input Data**: 224 by 224 greyscale MRI images
+*   **Model**: Stochastic gradient descent classifier
+*   **Hyperparameter Tuning**: partial fits because we can't load all the data in our limited RAM
+    *   **Parameters**: `C` (regularization parameter) 
+
 
 ## Results
 
@@ -115,3 +108,4 @@ This section will be updated with model performance metrics (e.g., accuracy, F1-
 *   Ebe Kort (e.kort.3@student.rug.nl)
 *   Senne Hollard (s.i.t.hollard@student.rug.nl)
 *   Tjeerd Morsch (t.p.r.morsch@student.rug.nl)
+*   Alexandra Andrei
