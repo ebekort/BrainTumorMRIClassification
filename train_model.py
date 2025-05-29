@@ -63,4 +63,4 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, device, n
 
 def train_baseline(baseline, train_loader):
     for images, labels in train_loader:
-        baseline.partial_fit(images, labels)
+        baseline.partial_fit(images, labels, classes=[0, 1, 2])
