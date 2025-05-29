@@ -11,6 +11,12 @@ torch = "*"
 pillow = "*"
 torchvision = "*"
 scikit-learn = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
+torch = "*"
+torchvision = "*"
+django = "*"
 
 [dev-packages]
 
