@@ -72,7 +72,7 @@ cd rest_api
 python manage.py runserver
 ```
 
-Django will automatically return the url, the server is running at which would be http://127.0.0.1:8000/ if ran locally. The api can be be accessed through a post request with one key-value pair in the form data, key: image. This can done via curl or postman
+Django will automatically return the url of the server, which would be http://127.0.0.1:8000/ if ran locally. The api can be be accessed through a post request with one key-value pair in the form data, key: image. This can done via curl or postman
 
 Curl:
 ```
@@ -81,8 +81,7 @@ curl -X POST http://localhost:8000/api/predict/ \
 ```
 
 Postman:
-![Picture showing how to use API through postman](Schermafbeelding 2025-05-29 213253.png)
-
+![Picture showing how to use API through postman](screen.png)
 
 
 This script will:
