@@ -53,7 +53,7 @@ To set up and run this project, please follow these steps:
 To train the main ResNet-based model:
 
 ```bash
-python main.py
+python main.py main_model
 ```
 
 The script will train the model using the data in `./data/`. The trained model (state dictionary) will be saved to `outputs/models/resnet_model.pth`.
@@ -63,8 +63,27 @@ The script will train the model using the data in `./data/`. The trained model (
 To train the SVM baseline model:
 
 ```bash
-python project_name/models/baseline_model_svm.py
+python main.py baseline_model
 ```
+
+### Model deployment through api
+```
+cd rest_api
+python manage.py runserver
+```
+
+Django will automatically return the url, the server is running at which would be http://127.0.0.1:8000/ if ran locally. The api can be be accessed through a post request with one key-value pair in the form data, key: image. This can done via curl or postman
+
+Curl:
+```
+curl -X POST http://localhost:8000/api/predict/ \
+  -F image=@/path/to/your/image.jpg
+```
+
+Postman:
+![Picture showing how to use API through postman](Schermafbeelding 2025-05-29 213253.png)
+
+
 
 This script will:
 *   Load and preprocess the data.
