@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torchvision import transforms
 
+#gradcam
 def apply_gradcam(model, image_tensor, target_class=None, device='cpu'):
     model.eval()
     image_tensor = image_tensor.unsqueeze(0).to(device)
