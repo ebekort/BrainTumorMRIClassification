@@ -29,12 +29,12 @@ def evaluate(model, test_loader, device, class_names):
     plt.show()
 
 if __name__ == "__main__":
-#main.py loading
+
     class_names = [cls for cls in os.listdir('./data') if not cls.endswith('.csv')]
     _, _, test_loader = get_dataloaders('./data', class_names)
 
     model = Model()
-    model_path = os.path.join("outputs", "models", "resnet_model.pth")
+    model_path = os.path.join("project_name", "models", "model7.pth")
     model.load_state_dict(torch.load(model_path, map_location='cpu'))  # map_location if on CPU
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
