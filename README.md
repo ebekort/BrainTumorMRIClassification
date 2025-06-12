@@ -135,8 +135,8 @@ Postman:
 
 | Model                     | Accuracy | Precision | Recall | F1-Score |
 |---------------------------|----------|-----------|--------|----------|
-| Baseline (SVM)            | 85.2%    | 84.5%     | 83.9%  | 84.2%    | 
-| Main Model (ResNet-based) | 93.7%    | 93.2%     | 92.8%  | 93.0%    | 
+| Baseline (SVM)            | 64%    | 68%     | 64%  | 62%    | 
+| Main Model (ResNet-based) | 98.9%    | 99%     | 99%  | 99%    | 
 
 *The metrics for the Baseline model are based on the test set using the `evaluate_and_train_baseline.py` script.*  and the metrics for the Main Model are based on the test set using the `evaluate.py` script.*
 
