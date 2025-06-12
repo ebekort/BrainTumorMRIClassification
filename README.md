@@ -66,6 +66,38 @@ To train the SVM baseline model:
 python main.py baseline_model
 ```
 
+### SVM Baseline Model Training with instant evaluation
+
+To train the SVM baseline model:
+
+```bash
+python main.py eval_baseline
+```
+
+### Loading ResNet model from rest_api into local environmet
+
+To load the ResNet model:
+
+```bash
+python main.py load
+```
+
+### Evaluate ResNet model on the test data (only possible after main model is loaded)
+
+To evaluate the ResNet model:
+
+```bash
+python main.py eval_main
+```
+
+### Grad_cam picture of one of the test pictures
+
+To see how the grad_cam works:
+
+```bash
+python main.py explain
+```
+
 ### Model deployment through api
 ```
 cd rest_api
