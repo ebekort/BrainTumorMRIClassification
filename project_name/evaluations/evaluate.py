@@ -1,9 +1,15 @@
 import torch
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import os
 from project_name.utils.loader import get_dataloaders
 from project_name.models.main_model import Model
+
+
+
+
+
 
 def evaluate(model, test_loader, device, class_names):
     model.eval()
@@ -18,15 +24,25 @@ def evaluate(model, test_loader, device, class_names):
             true_labels = torch.argmax(labels, dim=1)
             all_preds.extend(predicted.cpu().numpy())
             all_labels.extend(true_labels.cpu().numpy())
+    
+    accuracy = accuracy_score(all_labels, all_preds)
+    print(f"\n Accuracy: {accuracy * 100:.2f}%")
 
     print("\nClassification Report:\n")
     print(classification_report(all_labels, all_preds, target_names=class_names))
 
     cm = confusion_matrix(all_labels, all_preds)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
+
+    output_dir = 'results'
+    os.makedirs(output_dir, exist_ok=True)
+
     disp.plot(cmap=plt.cm.Blues)
-    plt.title("Confusion Matrix")
-    plt.show()
+    plt.title("Confusion Matrix Main Model")
+
+    save_path = os.path.join(output_dir, 'confusion_matrix_main_model.png')
+    plt.savefig(save_path)
+    print(f"Confusion matrix saved to {save_path}")
 
 
 def run():

@@ -1,10 +1,16 @@
 import torch
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import os
 from project_name.utils.loader import get_dataloaders
 from project_name.models.baseline_model import Baseline
 import numpy as np
+
+import os
+import torch
+from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay, accuracy_score
+import matplotlib.pyplot as plt
 
 def evaluate(model, test_loader, device, class_names, is_baseline=False):
     all_preds = []
@@ -24,13 +30,25 @@ def evaluate(model, test_loader, device, class_names, is_baseline=False):
             all_preds.extend(predicted.cpu().numpy() if not is_baseline else predicted)
             all_labels.extend(true_labels)
 
+    accuracy = accuracy_score(all_labels, all_preds)
+    print(f"\nAccuracy: {accuracy * 100:.2f}%")
+
     print("\nClassification Report:\n")
     print(classification_report(all_labels, all_preds, target_names=class_names))
 
     cm = confusion_matrix(all_labels, all_preds)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
+
+    output_dir = 'results'
+    os.makedirs(output_dir, exist_ok=True)
+
     disp.plot(cmap=plt.cm.Blues)
-    plt.title("Confusion Matrix")
+    plt.title("Confusion Matrix Baseline Model")
+
+    save_path = os.path.join(output_dir, 'confusion_matrix_baseline.png')
+    plt.savefig(save_path)
+    print(f"Confusion matrix saved to {save_path}")
+
     plt.show()
 
 def run():
