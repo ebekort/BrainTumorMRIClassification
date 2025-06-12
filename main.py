@@ -6,9 +6,7 @@ import torch.nn as nn
 from project_name.utils.loader import get_dataloaders
 from project_name.models.main_model import Model
 from project_name.models.baseline_model import Baseline
-from train_model import train_model, train_baseline
-
-# Optional imports (these should have a `run()` function inside them)
+from project_name.models.train_model import train_model, train_baseline
 from project_name.evaluations.evaluate import run as run_evaluate_main
 from project_name.evaluations.evaluate_and_train_baseline import run as run_evaluate_baseline
 from project_name.explainability.explainable import run as run_explainable

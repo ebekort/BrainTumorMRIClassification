@@ -10,7 +10,7 @@ from project_name.models.main_model import Model
 
 def run():
     source_path = './rest_api/myapp/models/model(7).pth'
-    dest_folder = './models'
+    dest_folder = './project_name/models'
     dest_path = os.path.join(dest_folder, 'model7.pth')
 
     os.makedirs(dest_folder, exist_ok=True)
