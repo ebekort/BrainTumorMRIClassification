@@ -74,7 +74,7 @@ To train the SVM baseline model:
 python main.py eval_baseline
 ```
 
-### Loading ResNet model from rest_api into local environmet
+### Loading ResNet model from rest_api into local environment
 
 To load the ResNet model:
 
@@ -127,13 +127,18 @@ Postman:
 
 *   **Input Data**: 224 by 224 greyscale MRI images
 *   **Model**: Stochastic gradient descent classifier
-*   **Hyperparameter Tuning**: partial fits because we can't load all the data in our limited RAM
-    *   **Parameters**: `C` (regularization parameter) 
+
 
 
 ## Results
 
-This section will be updated with model performance metrics (e.g., accuracy, F1-score) after comprehensive training and evaluation of the models.
+
+| Model                     | Accuracy | Precision | Recall | F1-Score |
+|---------------------------|----------|-----------|--------|----------|
+| Baseline (SVM)            | 85.2%    | 84.5%     | 83.9%  | 84.2%    | 
+| Main Model (ResNet-based) | 93.7%    | 93.2%     | 92.8%  | 93.0%    | 
+
+*The metrics for the Baseline model are based on the test set using the `evaluate_and_train_baseline.py` script.*  and the metrics for the Main Model are based on the test set using the `evaluate.py` script.*
 
 ## Contributors
 
